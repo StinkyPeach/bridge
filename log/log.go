@@ -6,18 +6,19 @@ import (
 
 	"github.com/StinkyPeach/bridge/common/observable"
 
-	log "github.com/sirupsen/logrus"
+	"github.com/sirupsen/logrus"
 )
 
 var (
 	logCh  = make(chan interface{})
 	source = observable.NewObservable(logCh)
 	level  = INFO
+	log    = logrus.New()
 )
 
 func init() {
 	log.SetOutput(os.Stdout)
-	log.SetLevel(log.DebugLevel)
+	log.SetLevel(logrus.InfoLevel)
 	log.SetReportCaller(true)
 	log.SetFormatter(new(Formatter))
 }
