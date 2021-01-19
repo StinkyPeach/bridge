@@ -33,13 +33,13 @@ func ParseProxy(mapping map[string]interface{}) (C.Proxy, error) {
 			break
 		}
 		proxy, err = NewShadowSocksR(*ssrOption)
-	//case "socks5":
-	//	socksOption := &Socks5Option{}
-	//	err = decoder.Decode(mapping, socksOption)
-	//	if err != nil {
-	//		break
-	//	}
-	//	proxy = NewSocks5(*socksOption)
+	case "socks5":
+		socksOption := &Socks5Option{}
+		err = decoder.Decode(mapping, socksOption)
+		if err != nil {
+			break
+		}
+		proxy = NewSocks5(*socksOption)
 	//case "http":
 	//	httpOption := &HttpOption{}
 	//	err = decoder.Decode(mapping, httpOption)
